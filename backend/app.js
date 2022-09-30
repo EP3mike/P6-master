@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const path = require('path');
 
 const userRoutes = require('./routes/user');
+const sauceRoutes = require('./routes/sauce');
 
 const app = express();
 
@@ -30,13 +31,11 @@ app.use((req, res, next) => {
 //forwards image sent to server to the image backend folder
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
-
 //forwards login/signup requests to our user routers
 app.use('/api/auth', userRoutes);
 
-
-
-
+//forwards all api/sauce requests to our sauce routers
+app.use('/api/sauces', sauceRoutes);
 
 
 app.use((req, res) => {
