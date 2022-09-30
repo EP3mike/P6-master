@@ -18,7 +18,33 @@ exports.getAllSauces = (req, res, next) => {
 
 //endpoint to create a Sauce post
 exports.createSauce = (req, res, next) => {
-
+    const url = req.protocol + '://' + req.get('host');
+    req.body.sauce = JSON.parse(req.body.sauce);
+    const sauce = new Sauce({
+        userId: req.body.sauce.userId,
+        name: req.body.sauce.name,
+        manufacturer: req.body.sauce.manufacturer,
+        mainPepper: req.body.sauce.mainPepper,
+        imageUrl: url + '/images/' + req.file.filename,
+        heat: req.body.sauce.heat,
+        likes: 0,
+        dislikes: 0,
+        usersLiked: [],
+        usersDisliked: []
+    });
+    sauce.save().then(
+        () => {
+          res.status(201).json({
+            message: 'Sauce saved successfully!'
+          });
+        }
+      ).catch(
+        (error) => {
+          res.status(400).json({
+            error: error
+          });
+        }
+    );
 };
 
 //endpoint to retrieve a single Sauce post by its id
