@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const path = require('path');
 
 const userRoutes = require('./routes/user');
 
@@ -25,6 +26,10 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
     next();
 });
+
+//forwards image sent to server to the image backend folder
+app.use('/images', express.static(path.join(__dirname, 'images')));
+
 
 //forwards login/signup requests to our user routers
 app.use('/api/auth', userRoutes);
