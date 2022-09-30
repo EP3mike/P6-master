@@ -1,6 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
+const userRoutes = require('./routes/user');
+
 const app = express();
 
 // express json parser allows access to request body
@@ -23,6 +25,14 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
     next();
 });
+
+//forwards login/signup requests to our user routers
+app.use('/api/auth', userRoutes);
+
+
+
+
+
 
 app.use((req, res) => {
     res.json({message: 'Request was successful'});
