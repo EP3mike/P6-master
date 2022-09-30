@@ -37,9 +37,4 @@ app.use('/api/auth', userRoutes);
 //forwards all api/sauce requests to our sauce routers
 app.use('/api/sauces', sauceRoutes);
 
-
-app.use((req, res) => {
-    res.json({message: 'Request was successful'});
-});
-
 module.exports = app;
