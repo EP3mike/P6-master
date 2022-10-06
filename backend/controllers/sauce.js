@@ -24,6 +24,7 @@ exports.createSauce = (req, res, next) => {
         userId: req.body.sauce.userId,
         name: req.body.sauce.name,
         manufacturer: req.body.sauce.manufacturer,
+        description: req.body.sauce.description,
         mainPepper: req.body.sauce.mainPepper,
         imageUrl: url + '/images/' + req.file.filename,
         heat: req.body.sauce.heat,
@@ -41,7 +42,7 @@ exports.createSauce = (req, res, next) => {
       ).catch(
         (error) => {
           res.status(400).json({
-            error: error
+            message: error
           });
         }
     );
