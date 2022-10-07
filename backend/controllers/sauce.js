@@ -86,17 +86,17 @@ exports.modifySauce = (req, res, next) => {
     } else {
         sauce = {
           _id: req.params.id,
-          userId: req.body.sauce.userId,
-          name: req.body.sauce.name,
-          manufacturer: req.body.sauce.manufacturer,
-          description: req.body.sauce.description,
-          mainPepper: req.body.sauce.mainPepper,
-          imageUrl: req.file.imageUrl,
-          heat: req.body.sauce.heat,
-          likes: req.body.sauce.likes,
-          dislikes: req.body.sauce.dislikes,
-          usersLiked: req.body.sauce.usersLiked,
-          usersDisliked: req.body.sauce.usersDisliked
+          userId: req.body.userId,
+          name: req.body.name,
+          manufacturer: req.body.manufacturer,
+          description: req.body.description,
+          mainPepper: req.body.mainPepper,
+          imageUrl: req.body.imageUrl,
+          heat: req.body.heat,
+          likes: req.body.likes,
+          dislikes: req.body.dislikes,
+          usersLiked: req.body.usersLiked,
+          usersDisliked: req.body.usersDisliked
         };
     }
     // depending on case 1 or 2 of the updated sauce mongoose call to update specific post in database
@@ -138,5 +138,5 @@ exports.deleteSauce = (req, res, next) => {
 
 //endpoint to modify the like status for a sauce post
 exports.setLike = (req, res, next) => {
-
+    
 };
